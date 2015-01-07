@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
 
@@ -13,6 +14,7 @@ func hello(c web.C, w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	flag.Set("bind", ":8000")
 	goji.Get("/hello/:name", hello)
 	goji.Serve()
 }
